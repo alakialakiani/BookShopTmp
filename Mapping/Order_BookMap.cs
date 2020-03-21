@@ -1,4 +1,4 @@
-﻿using BookShop.Models;
+﻿using BookShopTmp.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using System;
@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace BookShop.Mapping
+namespace BookShopTmp.Mapping
 {
     public class Order_BookMap : IEntityTypeConfiguration<Order_Book>
     {

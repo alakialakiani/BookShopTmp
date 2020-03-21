@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Threading.Tasks;
 
-namespace BookShop.Models
+namespace BookShopTmp.Models
 {
     [Table("BookInfo")]
     public class Book
@@ -40,8 +38,6 @@ namespace BookShop.Models
 
         public Publisher Publisher { get; set; }
     }
-
-
     public class Publisher
     {
         [Key]
@@ -50,7 +46,6 @@ namespace BookShop.Models
 
         public List<Book> Books { get; set; }
     }
-
     public class Book_Translator
     {
         public int TranslatorID { get; set; }
@@ -59,7 +54,6 @@ namespace BookShop.Models
         public Book Book { get; set; }
         public Translator Translator { get; set; }
     }
-
     public class Translator
     {
         [Key]
@@ -69,7 +63,6 @@ namespace BookShop.Models
 
         public List<Book_Translator> book_Tranlators { get; set; }
     }
-
     public class Author_Book
     {
         public int BookID { get; set; }
@@ -78,7 +71,6 @@ namespace BookShop.Models
         public Book Book { get; set; }
         public Author Author { get; set; }
     }
-
     public class Author
     {
         [Key]
@@ -88,7 +80,6 @@ namespace BookShop.Models
 
         public List<Author_Book> Author_Books { get; set; }
     }
-
     public class Discount
     {
         [Key,ForeignKey("Book")]
@@ -99,7 +90,6 @@ namespace BookShop.Models
 
         public Book Book { get; set; }
     }
-
     public class Language
     {
         public int LanguageID { get; set; }
@@ -107,7 +97,6 @@ namespace BookShop.Models
 
         public List<Book> Books { get; set; }
     }
-
     public class Category
     {
         [Key]
@@ -120,8 +109,6 @@ namespace BookShop.Models
         public Category category { get; set; }
         public List<Category> categories { get; set; }
     }
-
-
     public class Order
     {
         public string OrderID { get; set; }
@@ -133,7 +120,6 @@ namespace BookShop.Models
         public Customer Customer { get; set; }
         public List<Order_Book> Order_Books { get; set; }
     }
-
     public class Order_Book
     {
         public string OrderID { get; set; }
@@ -142,8 +128,6 @@ namespace BookShop.Models
         public Order Order { get; set; }
         public Book Book { get; set; }
     }
-
-
     public class OrderStatus
     {
         public int OrderStatusID { get; set; }
@@ -151,7 +135,6 @@ namespace BookShop.Models
 
         public List<Order> Orders { get; set; }
     }
-
     public class Customer
     {
         public string CustomerID { get; set; }
@@ -173,7 +156,6 @@ namespace BookShop.Models
         public City city2 { get; set; }
         public List<Order> Orders { get; set; }
     }
-
     public class Provice
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
@@ -183,7 +165,6 @@ namespace BookShop.Models
 
         public List<City> City { get; set; }
     }
-
     public class City
     {
         [DatabaseGenerated(DatabaseGeneratedOption.None)]

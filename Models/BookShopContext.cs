@@ -1,11 +1,12 @@
-﻿using BookShop.Mapping;
+﻿using BookShopTmp.Mapping;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BookShopTmp.Models;
 
-namespace BookShop.Models
+namespace BookShopTmp.Models
 {
     public class BookShopContext : DbContext
     {
@@ -35,5 +36,6 @@ namespace BookShop.Models
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<BookShopTmp.Models.Translator> Translator { get; set; }
     }
 }

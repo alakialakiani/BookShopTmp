@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using BookShop.Models;
+using BookShopTmp.Models;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -29,6 +29,7 @@ namespace BookShopTmp
 			services.AddDbContext<BookShopContext>(
 				options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddTransient<BookShopContext>();
+			services.AddRazorPages();
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -53,6 +54,11 @@ namespace BookShopTmp
 
 			app.UseEndpoints(endpoints =>
 			{
+				endpoints.MapControllerRoute(
+					name: "areas",
+					pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+				endpoints.MapRazorPages();
+				
 				endpoints.MapControllerRoute(
 					name: "default",
 					pattern: "{controller=Home}/{action=Index}/{id?}");
