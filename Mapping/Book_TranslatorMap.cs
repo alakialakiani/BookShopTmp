@@ -12,17 +12,17 @@ namespace BookShopTmp.Mapping
     {
         public void Configure(EntityTypeBuilder<Book_Translator> builder)
         {
-            builder.HasKey(p => new { p.BookID, p.TranslatorID });
+            builder.HasKey(p => new { p.BookId, p.TranslatorId });
             builder
                 .HasOne(b => b.Book)
-                .WithMany(p => p.book_Tranlators)
-                .HasForeignKey(f => f.BookID);
+                .WithMany(p => p.Book_Tranlators)
+                .HasForeignKey(f => f.BookId);
 
 
             builder
               .HasOne(b => b.Translator)
               .WithMany(p => p.book_Tranlators)
-              .HasForeignKey(f => f.TranslatorID);
+              .HasForeignKey(f => f.TranslatorId);
 
         }
     }

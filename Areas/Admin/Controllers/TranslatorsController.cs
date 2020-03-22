@@ -47,7 +47,7 @@ namespace BookShopTmp.Areas.Admin.Controllers
                 return NotFound();
             else
             {
-                var translator = await _context.Translator.FirstOrDefaultAsync(t => t.TranslatorID == id);
+                var translator = await _context.Translator.FirstOrDefaultAsync(t => t.TranslatorId == id);
                 if (translator == null)
                     return NotFound();
                 else
@@ -77,7 +77,7 @@ namespace BookShopTmp.Areas.Admin.Controllers
                 return NotFound();
             else
             {
-                var translator = await _context.Translator.FirstOrDefaultAsync(t => t.TranslatorID == id);
+                var translator = await _context.Translator.FirstOrDefaultAsync(t => t.TranslatorId == id);
                 if (translator is null)
                     return NotFound();
                 else

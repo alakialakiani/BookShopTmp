@@ -11,33 +11,33 @@ namespace BookShopTmp.Migrations
                 name: "Authors",
                 columns: table => new
                 {
-                    AuthorID = table.Column<int>(nullable: false)
+                    AuthorId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Authors", x => x.AuthorID);
+                    table.PrimaryKey("PK_Authors", x => x.AuthorId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Categories",
                 columns: table => new
                 {
-                    CategoryID = table.Column<int>(nullable: false)
+                    CategoryId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     CategoryName = table.Column<string>(nullable: true),
-                    ParentCategoryID = table.Column<int>(nullable: true)
+                    ParentCategoryId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.CategoryID);
+                    table.PrimaryKey("PK_Categories", x => x.CategoryId);
                     table.ForeignKey(
-                        name: "FK_Categories_Categories_ParentCategoryID",
-                        column: x => x.ParentCategoryID,
+                        name: "FK_Categories_Categories_ParentCategoryId",
+                        column: x => x.ParentCategoryId,
                         principalTable: "Categories",
-                        principalColumn: "CategoryID",
+                        principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -45,83 +45,83 @@ namespace BookShopTmp.Migrations
                 name: "Languages",
                 columns: table => new
                 {
-                    LanguageID = table.Column<int>(nullable: false)
+                    LanguageId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     LanguageName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Languages", x => x.LanguageID);
+                    table.PrimaryKey("PK_Languages", x => x.LanguageId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "OrderStatuses",
                 columns: table => new
                 {
-                    OrderStatusID = table.Column<int>(nullable: false)
+                    OrderStatusId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     OrderStatusName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderStatuses", x => x.OrderStatusID);
+                    table.PrimaryKey("PK_OrderStatuses", x => x.OrderStatusId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Provices",
                 columns: table => new
                 {
-                    ProvinceID = table.Column<int>(nullable: false),
+                    ProvinceId = table.Column<int>(nullable: false),
                     ProvinceName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Provices", x => x.ProvinceID);
+                    table.PrimaryKey("PK_Provices", x => x.ProvinceId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Publisher",
                 columns: table => new
                 {
-                    PublisherID = table.Column<int>(nullable: false)
+                    PublisherId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     PublisherName = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Publisher", x => x.PublisherID);
+                    table.PrimaryKey("PK_Publisher", x => x.PublisherId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Translator",
                 columns: table => new
                 {
-                    TranslatorID = table.Column<int>(nullable: false)
+                    TranslatorId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Family = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Translator", x => x.TranslatorID);
+                    table.PrimaryKey("PK_Translator", x => x.TranslatorId);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Cities",
                 columns: table => new
                 {
-                    CityID = table.Column<int>(nullable: false),
+                    CityId = table.Column<int>(nullable: false),
                     CityName = table.Column<string>(nullable: true),
-                    ProviceProvinceID = table.Column<int>(nullable: true)
+                    ProviceProvinceId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Cities", x => x.CityID);
+                    table.PrimaryKey("PK_Cities", x => x.CityId);
                     table.ForeignKey(
-                        name: "FK_Cities_Provices_ProviceProvinceID",
-                        column: x => x.ProviceProvinceID,
+                        name: "FK_Cities_Provices_ProviceProvinceId",
+                        column: x => x.ProviceProvinceId,
                         principalTable: "Provices",
-                        principalColumn: "ProvinceID",
+                        principalColumn: "ProvinceId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -129,7 +129,7 @@ namespace BookShopTmp.Migrations
                 name: "BookInfo",
                 columns: table => new
                 {
-                    BookID = table.Column<int>(nullable: false)
+                    BookId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Title = table.Column<string>(nullable: false),
                     Summary = table.Column<string>(nullable: true),
@@ -140,30 +140,30 @@ namespace BookShopTmp.Migrations
                     Weight = table.Column<short>(nullable: false),
                     ISBN = table.Column<string>(nullable: true),
                     Image = table.Column<byte[]>(type: "image", nullable: true),
-                    LanguageID = table.Column<int>(nullable: false),
-                    CategoryID = table.Column<int>(nullable: false),
-                    PublisherID = table.Column<int>(nullable: true)
+                    LanguageId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false),
+                    PublisherId = table.Column<int>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookInfo", x => x.BookID);
+                    table.PrimaryKey("PK_BookInfo", x => x.BookId);
                     table.ForeignKey(
-                        name: "FK_BookInfo_Categories_CategoryID",
-                        column: x => x.CategoryID,
+                        name: "FK_BookInfo_Categories_CategoryId",
+                        column: x => x.CategoryId,
                         principalTable: "Categories",
-                        principalColumn: "CategoryID",
+                        principalColumn: "CategoryId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookInfo_Languages_LanguageID",
-                        column: x => x.LanguageID,
+                        name: "FK_BookInfo_Languages_LanguageId",
+                        column: x => x.LanguageId,
                         principalTable: "Languages",
-                        principalColumn: "LanguageID",
+                        principalColumn: "LanguageId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookInfo_Publisher_PublisherID",
-                        column: x => x.PublisherID,
+                        name: "FK_BookInfo_Publisher_PublisherId",
+                        column: x => x.PublisherId,
                         principalTable: "Publisher",
-                        principalColumn: "PublisherID",
+                        principalColumn: "PublisherId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -171,7 +171,7 @@ namespace BookShopTmp.Migrations
                 name: "Customers",
                 columns: table => new
                 {
-                    CustomerID = table.Column<string>(nullable: false),
+                    CustomerId = table.Column<string>(nullable: false),
                     FirstName = table.Column<string>(nullable: true),
                     LastName = table.Column<string>(nullable: true),
                     BirthDate = table.Column<DateTime>(nullable: false),
@@ -181,23 +181,23 @@ namespace BookShopTmp.Migrations
                     Tell = table.Column<string>(nullable: true),
                     Image = table.Column<string>(nullable: true),
                     Age = table.Column<int>(nullable: false),
-                    CityID1 = table.Column<int>(nullable: false),
-                    CityID2 = table.Column<int>(nullable: false)
+                    CityId1 = table.Column<int>(nullable: false),
+                    CityId2 = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Customers", x => x.CustomerID);
+                    table.PrimaryKey("PK_Customers", x => x.CustomerId);
                     table.ForeignKey(
-                        name: "FK_Customers_Cities_CityID1",
-                        column: x => x.CityID1,
+                        name: "FK_Customers_Cities_CityId1",
+                        column: x => x.CityId1,
                         principalTable: "Cities",
-                        principalColumn: "CityID",
+                        principalColumn: "CityId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Customers_Cities_CityID2",
-                        column: x => x.CityID2,
+                        name: "FK_Customers_Cities_CityId2",
+                        column: x => x.CityId2,
                         principalTable: "Cities",
-                        principalColumn: "CityID",
+                        principalColumn: "CityId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -205,23 +205,23 @@ namespace BookShopTmp.Migrations
                 name: "Author_Books",
                 columns: table => new
                 {
-                    BookID = table.Column<int>(nullable: false),
-                    AuthorID = table.Column<int>(nullable: false)
+                    BookId = table.Column<int>(nullable: false),
+                    AuthorId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Author_Books", x => new { x.BookID, x.AuthorID });
+                    table.PrimaryKey("PK_Author_Books", x => new { x.BookId, x.AuthorId });
                     table.ForeignKey(
-                        name: "FK_Author_Books_Authors_AuthorID",
-                        column: x => x.AuthorID,
+                        name: "FK_Author_Books_Authors_AuthorId",
+                        column: x => x.AuthorId,
                         principalTable: "Authors",
-                        principalColumn: "AuthorID",
+                        principalColumn: "AuthorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Author_Books_BookInfo_BookID",
-                        column: x => x.BookID,
+                        name: "FK_Author_Books_BookInfo_BookId",
+                        column: x => x.BookId,
                         principalTable: "BookInfo",
-                        principalColumn: "BookID",
+                        principalColumn: "BookId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -229,23 +229,23 @@ namespace BookShopTmp.Migrations
                 name: "Book_Translator",
                 columns: table => new
                 {
-                    TranslatorID = table.Column<int>(nullable: false),
-                    BookID = table.Column<int>(nullable: false)
+                    TranslatorId = table.Column<int>(nullable: false),
+                    BookId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Book_Translator", x => new { x.BookID, x.TranslatorID });
+                    table.PrimaryKey("PK_Book_Translator", x => new { x.BookId, x.TranslatorId });
                     table.ForeignKey(
-                        name: "FK_Book_Translator_BookInfo_BookID",
-                        column: x => x.BookID,
+                        name: "FK_Book_Translator_BookInfo_BookId",
+                        column: x => x.BookId,
                         principalTable: "BookInfo",
-                        principalColumn: "BookID",
+                        principalColumn: "BookId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Book_Translator_Translator_TranslatorID",
-                        column: x => x.TranslatorID,
+                        name: "FK_Book_Translator_Translator_TranslatorId",
+                        column: x => x.TranslatorId,
                         principalTable: "Translator",
-                        principalColumn: "TranslatorID",
+                        principalColumn: "TranslatorId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -253,19 +253,19 @@ namespace BookShopTmp.Migrations
                 name: "Discounts",
                 columns: table => new
                 {
-                    BookID = table.Column<int>(nullable: false),
+                    BookId = table.Column<int>(nullable: false),
                     StartDate = table.Column<DateTime>(nullable: false),
                     EndDate = table.Column<DateTime>(nullable: true),
                     Percent = table.Column<byte>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Discounts", x => x.BookID);
+                    table.PrimaryKey("PK_Discounts", x => x.BookId);
                     table.ForeignKey(
-                        name: "FK_Discounts_BookInfo_BookID",
-                        column: x => x.BookID,
+                        name: "FK_Discounts_BookInfo_BookId",
+                        column: x => x.BookId,
                         principalTable: "BookInfo",
-                        principalColumn: "BookID",
+                        principalColumn: "BookId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
@@ -273,27 +273,27 @@ namespace BookShopTmp.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    OrderID = table.Column<string>(nullable: false),
+                    OrderId = table.Column<string>(nullable: false),
                     AmountPaid = table.Column<long>(nullable: false),
                     DispatchNumber = table.Column<string>(nullable: true),
                     BuyDate = table.Column<DateTime>(nullable: false),
-                    OrderStatusID = table.Column<int>(nullable: true),
-                    CustomerID = table.Column<string>(nullable: true)
+                    OrderStatusId = table.Column<int>(nullable: true),
+                    CustomerId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.OrderID);
+                    table.PrimaryKey("PK_Orders", x => x.OrderId);
                     table.ForeignKey(
-                        name: "FK_Orders_Customers_CustomerID",
-                        column: x => x.CustomerID,
+                        name: "FK_Orders_Customers_CustomerId",
+                        column: x => x.CustomerId,
                         principalTable: "Customers",
-                        principalColumn: "CustomerID",
+                        principalColumn: "CustomerId",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Orders_OrderStatuses_OrderStatusID",
-                        column: x => x.OrderStatusID,
+                        name: "FK_Orders_OrderStatuses_OrderStatusId",
+                        column: x => x.OrderStatusId,
                         principalTable: "OrderStatuses",
-                        principalColumn: "OrderStatusID",
+                        principalColumn: "OrderStatusId",
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -301,85 +301,85 @@ namespace BookShopTmp.Migrations
                 name: "Order_Books",
                 columns: table => new
                 {
-                    OrderID = table.Column<string>(nullable: false),
-                    BookID = table.Column<int>(nullable: false)
+                    OrderId = table.Column<string>(nullable: false),
+                    BookId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Order_Books", x => new { x.OrderID, x.BookID });
+                    table.PrimaryKey("PK_Order_Books", x => new { x.OrderId, x.BookId });
                     table.ForeignKey(
-                        name: "FK_Order_Books_BookInfo_BookID",
-                        column: x => x.BookID,
+                        name: "FK_Order_Books_BookInfo_BookId",
+                        column: x => x.BookId,
                         principalTable: "BookInfo",
-                        principalColumn: "BookID",
+                        principalColumn: "BookId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Order_Books_Orders_OrderID",
-                        column: x => x.OrderID,
+                        name: "FK_Order_Books_Orders_OrderId",
+                        column: x => x.OrderId,
                         principalTable: "Orders",
-                        principalColumn: "OrderID",
+                        principalColumn: "OrderId",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Author_Books_AuthorID",
+                name: "IX_Author_Books_AuthorId",
                 table: "Author_Books",
-                column: "AuthorID");
+                column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Book_Translator_TranslatorID",
+                name: "IX_Book_Translator_TranslatorId",
                 table: "Book_Translator",
-                column: "TranslatorID");
+                column: "TranslatorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookInfo_CategoryID",
+                name: "IX_BookInfo_CategoryId",
                 table: "BookInfo",
-                column: "CategoryID");
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookInfo_LanguageID",
+                name: "IX_BookInfo_LanguageId",
                 table: "BookInfo",
-                column: "LanguageID");
+                column: "LanguageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookInfo_PublisherID",
+                name: "IX_BookInfo_PublisherId",
                 table: "BookInfo",
-                column: "PublisherID");
+                column: "PublisherId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Categories_ParentCategoryID",
+                name: "IX_Categories_ParentCategoryId",
                 table: "Categories",
-                column: "ParentCategoryID");
+                column: "ParentCategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Cities_ProviceProvinceID",
+                name: "IX_Cities_ProviceProvinceId",
                 table: "Cities",
-                column: "ProviceProvinceID");
+                column: "ProviceProvinceId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Customers_CityID1",
+                name: "IX_Customers_CityId1",
                 table: "Customers",
-                column: "CityID1");
+                column: "CityId1");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Customers_CityID2",
+                name: "IX_Customers_CityId2",
                 table: "Customers",
-                column: "CityID2");
+                column: "CityId2");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Order_Books_BookID",
+                name: "IX_Order_Books_BookId",
                 table: "Order_Books",
-                column: "BookID");
+                column: "BookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomerID",
+                name: "IX_Orders_CustomerId",
                 table: "Orders",
-                column: "CustomerID");
+                column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_OrderStatusID",
+                name: "IX_Orders_OrderStatusId",
                 table: "Orders",
-                column: "OrderStatusID");
+                column: "OrderStatusId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

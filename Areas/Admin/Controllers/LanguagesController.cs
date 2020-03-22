@@ -34,7 +34,7 @@ namespace BookShopTmp.Areas.Admin.Controllers
             }
 
             var language = await _context.Languages
-                .FirstOrDefaultAsync(m => m.LanguageID == id);
+                .FirstOrDefaultAsync(m => m.LanguageId == id);
             if (language == null)
             {
                 return NotFound();
@@ -54,7 +54,7 @@ namespace BookShopTmp.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("LanguageID,LanguageName")] Language language)
+        public async Task<IActionResult> Create([Bind("LanguageId,LanguageName")] Language language)
         {
             if (ModelState.IsValid)
             {
@@ -86,9 +86,9 @@ namespace BookShopTmp.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("LanguageID,LanguageName")] Language language)
+        public async Task<IActionResult> Edit(int id, [Bind("LanguageId,LanguageName")] Language language)
         {
-            if (id != language.LanguageID)
+            if (id != language.LanguageId)
             {
                 return NotFound();
             }
@@ -102,7 +102,7 @@ namespace BookShopTmp.Areas.Admin.Controllers
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!LanguageExists(language.LanguageID))
+                    if (!LanguageExists(language.LanguageId))
                     {
                         return NotFound();
                     }
@@ -125,7 +125,7 @@ namespace BookShopTmp.Areas.Admin.Controllers
             }
 
             var language = await _context.Languages
-                .FirstOrDefaultAsync(m => m.LanguageID == id);
+                .FirstOrDefaultAsync(m => m.LanguageId == id);
             if (language == null)
             {
                 return NotFound();
@@ -147,7 +147,7 @@ namespace BookShopTmp.Areas.Admin.Controllers
 
         private bool LanguageExists(int id)
         {
-            return _context.Languages.Any(e => e.LanguageID == id);
+            return _context.Languages.Any(e => e.LanguageId == id);
         }
     }
 }

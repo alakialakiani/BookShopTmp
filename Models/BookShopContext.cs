@@ -22,6 +22,7 @@ namespace BookShopTmp.Models
             modelBuilder.ApplyConfiguration(new CustomerMap());
             modelBuilder.ApplyConfiguration(new Order_BookMap());
             modelBuilder.ApplyConfiguration(new Book_TranslatorMap());
+            modelBuilder.ApplyConfiguration(new Book_CategoryMap());
         }
 
         public DbSet<Book> Books { get; set; }
@@ -36,6 +37,8 @@ namespace BookShopTmp.Models
         public DbSet<Discount> Discounts { get; set; }
         public DbSet<OrderStatus> OrderStatuses { get; set; }
         public DbSet<Customer> Customers { get; set; }
+        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<Book_Category> Book_Categories { get; set; }
         public DbSet<BookShopTmp.Models.Translator> Translator { get; set; }
     }
 }

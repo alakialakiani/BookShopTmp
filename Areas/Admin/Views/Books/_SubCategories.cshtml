@@ -1,0 +1,11 @@
+﻿@model IEnumerable<BookShopTmp.Models.ViewModels.TreeViewCategory>
+
+    <ul>
+        @foreach (var item in Model)
+        {
+            <li>
+                <input type="checkbox" /> @item.CategoryName
+                @await Html.PartialAsync("_SubCategories", item.SubCategories)
+            </li>
+        }
+    </ul>

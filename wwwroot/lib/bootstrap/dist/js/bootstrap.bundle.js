@@ -80,7 +80,7 @@
    */
 
   var TRANSITION_END = 'transitionend';
-  var MAX_UID = 1000000;
+  var MAX_UId = 1000000;
   var MILLISECONDS_MULTIPLIER = 1000; // Shoutout AngusCroll (https://goo.gl/pxwQGp)
 
   function toType(obj) {
@@ -129,10 +129,10 @@
 
   var Util = {
     TRANSITION_END: 'bsTransitionEnd',
-    getUID: function getUID(prefix) {
+    getUId: function getUId(prefix) {
       do {
         // eslint-disable-next-line no-bitwise
-        prefix += ~~(Math.random() * MAX_UID); // "~~" acts like a faster Math.floor() here
+        prefix += ~~(Math.random() * MAX_UId); // "~~" acts like a faster Math.floor() here
       } while (document.getElementById(prefix));
 
       return prefix;
@@ -583,8 +583,8 @@
     RIGHT: 'right'
   };
   var Event$2 = {
-    SLIDE: "slide" + EVENT_KEY$2,
-    SLID: "slid" + EVENT_KEY$2,
+    SLIdE: "slide" + EVENT_KEY$2,
+    SLId: "slid" + EVENT_KEY$2,
     KEYDOWN: "keydown" + EVENT_KEY$2,
     MOUSEENTER: "mouseenter" + EVENT_KEY$2,
     MOUSELEAVE: "mouseleave" + EVENT_KEY$2,
@@ -600,7 +600,7 @@
   var ClassName$2 = {
     CAROUSEL: 'carousel',
     ACTIVE: 'active',
-    SLIDE: 'slide',
+    SLIdE: 'slide',
     RIGHT: 'carousel-item-right',
     LEFT: 'carousel-item-left',
     NEXT: 'carousel-item-next',
@@ -615,8 +615,8 @@
     ITEM_IMG: '.carousel-item img',
     NEXT_PREV: '.carousel-item-next, .carousel-item-prev',
     INDICATORS: '.carousel-indicators',
-    DATA_SLIDE: '[data-slide], [data-slide-to]',
-    DATA_RIDE: '[data-ride="carousel"]'
+    DATA_SLIdE: '[data-slide], [data-slide-to]',
+    DATA_RIdE: '[data-ride="carousel"]'
   };
   var PointerType = {
     TOUCH: 'touch',
@@ -715,7 +715,7 @@
       }
 
       if (this._isSliding) {
-        $(this._element).one(Event$2.SLID, function () {
+        $(this._element).one(Event$2.SLId, function () {
           return _this.to(index);
         });
         return;
@@ -918,7 +918,7 @@
 
       var fromIndex = this._getItemIndex(this._element.querySelector(Selector$2.ACTIVE_ITEM));
 
-      var slideEvent = $.Event(Event$2.SLIDE, {
+      var slideEvent = $.Event(Event$2.SLIdE, {
         relatedTarget: relatedTarget,
         direction: eventDirectionName,
         from: fromIndex,
@@ -991,14 +991,14 @@
 
       this._setActiveIndicatorElement(nextElement);
 
-      var slidEvent = $.Event(Event$2.SLID, {
+      var slidEvent = $.Event(Event$2.SLId, {
         relatedTarget: nextElement,
         direction: eventDirectionName,
         from: activeElementIndex,
         to: nextElementIndex
       });
 
-      if ($(this._element).hasClass(ClassName$2.SLIDE)) {
+      if ($(this._element).hasClass(ClassName$2.SLIdE)) {
         $(nextElement).addClass(orderClassName);
         Util.reflow(nextElement);
         $(activeElement).addClass(directionalClassName);
@@ -1117,9 +1117,9 @@
    */
 
 
-  $(document).on(Event$2.CLICK_DATA_API, Selector$2.DATA_SLIDE, Carousel._dataApiClickHandler);
+  $(document).on(Event$2.CLICK_DATA_API, Selector$2.DATA_SLIdE, Carousel._dataApiClickHandler);
   $(window).on(Event$2.LOAD_DATA_API, function () {
-    var carousels = [].slice.call(document.querySelectorAll(Selector$2.DATA_RIDE));
+    var carousels = [].slice.call(document.querySelectorAll(Selector$2.DATA_RIdE));
 
     for (var i = 0, len = carousels.length; i < len; i++) {
       var $carousel = $(carousels[i]);
@@ -1164,8 +1164,8 @@
   var Event$3 = {
     SHOW: "show" + EVENT_KEY$3,
     SHOWN: "shown" + EVENT_KEY$3,
-    HIDE: "hide" + EVENT_KEY$3,
-    HIDDEN: "hidden" + EVENT_KEY$3,
+    HIdE: "hide" + EVENT_KEY$3,
+    HIdDEN: "hidden" + EVENT_KEY$3,
     CLICK_DATA_API: "click" + EVENT_KEY$3 + DATA_API_KEY$3
   };
   var ClassName$3 = {
@@ -1175,7 +1175,7 @@
     COLLAPSED: 'collapsed'
   };
   var Dimension = {
-    WIDTH: 'width',
+    WIdTH: 'width',
     HEIGHT: 'height'
   };
   var Selector$3 = {
@@ -1317,7 +1317,7 @@
         return;
       }
 
-      var startEvent = $.Event(Event$3.HIDE);
+      var startEvent = $.Event(Event$3.HIdE);
       $(this._element).trigger(startEvent);
 
       if (startEvent.isDefaultPrevented()) {
@@ -1351,7 +1351,7 @@
       var complete = function complete() {
         _this2.setTransitioning(false);
 
-        $(_this2._element).removeClass(ClassName$3.COLLAPSING).addClass(ClassName$3.COLLAPSE).trigger(Event$3.HIDDEN);
+        $(_this2._element).removeClass(ClassName$3.COLLAPSING).addClass(ClassName$3.COLLAPSE).trigger(Event$3.HIdDEN);
       };
 
       this._element.style[dimension] = '';
@@ -1382,8 +1382,8 @@
     };
 
     _proto._getDimension = function _getDimension() {
-      var hasWidth = $(this._element).hasClass(Dimension.WIDTH);
-      return hasWidth ? Dimension.WIDTH : Dimension.HEIGHT;
+      var hasWidth = $(this._element).hasClass(Dimension.WIdTH);
+      return hasWidth ? Dimension.WIdTH : Dimension.HEIGHT;
     };
 
     _proto._getParent = function _getParent() {
@@ -1517,7 +1517,7 @@
    * The above copyright notice and this permission notice shall be included in all
    * copies or substantial portions of the Software.
    *
-   * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+   * THE SOFTWARE IS PROVIdED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
    * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
    * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
    * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -4106,8 +4106,8 @@
 
   var REGEXP_KEYDOWN = new RegExp(ARROW_UP_KEYCODE + "|" + ARROW_DOWN_KEYCODE + "|" + ESCAPE_KEYCODE);
   var Event$4 = {
-    HIDE: "hide" + EVENT_KEY$4,
-    HIDDEN: "hidden" + EVENT_KEY$4,
+    HIdE: "hide" + EVENT_KEY$4,
+    HIdDEN: "hidden" + EVENT_KEY$4,
     SHOW: "show" + EVENT_KEY$4,
     SHOWN: "shown" + EVENT_KEY$4,
     CLICK: "click" + EVENT_KEY$4,
@@ -4283,7 +4283,7 @@
       var relatedTarget = {
         relatedTarget: this._element
       };
-      var hideEvent = $.Event(Event$4.HIDE, relatedTarget);
+      var hideEvent = $.Event(Event$4.HIdE, relatedTarget);
 
       var parent = Dropdown._getParentFromElement(this._element);
 
@@ -4294,7 +4294,7 @@
       }
 
       $(this._menu).toggleClass(ClassName$4.SHOW);
-      $(parent).toggleClass(ClassName$4.SHOW).trigger($.Event(Event$4.HIDDEN, relatedTarget));
+      $(parent).toggleClass(ClassName$4.SHOW).trigger($.Event(Event$4.HIdDEN, relatedTarget));
     };
 
     _proto.dispose = function dispose() {
@@ -4469,7 +4469,7 @@
           continue;
         }
 
-        var hideEvent = $.Event(Event$4.HIDE, relatedTarget);
+        var hideEvent = $.Event(Event$4.HIdE, relatedTarget);
         $(parent).trigger(hideEvent);
 
         if (hideEvent.isDefaultPrevented()) {
@@ -4484,7 +4484,7 @@
 
         toggles[i].setAttribute('aria-expanded', 'false');
         $(dropdownMenu).removeClass(ClassName$4.SHOW);
-        $(parent).removeClass(ClassName$4.SHOW).trigger($.Event(Event$4.HIDDEN, relatedTarget));
+        $(parent).removeClass(ClassName$4.SHOW).trigger($.Event(Event$4.HIdDEN, relatedTarget));
       }
     };
 
@@ -4633,8 +4633,8 @@
     show: 'boolean'
   };
   var Event$5 = {
-    HIDE: "hide" + EVENT_KEY$5,
-    HIDDEN: "hidden" + EVENT_KEY$5,
+    HIdE: "hide" + EVENT_KEY$5,
+    HIdDEN: "hidden" + EVENT_KEY$5,
     SHOW: "show" + EVENT_KEY$5,
     SHOWN: "shown" + EVENT_KEY$5,
     FOCUSIN: "focusin" + EVENT_KEY$5,
@@ -4750,7 +4750,7 @@
         return;
       }
 
-      var hideEvent = $.Event(Event$5.HIDE);
+      var hideEvent = $.Event(Event$5.HIdE);
       $(this._element).trigger(hideEvent);
 
       if (!this._isShown || hideEvent.isDefaultPrevented()) {
@@ -4927,7 +4927,7 @@
 
         _this7._resetScrollbar();
 
-        $(_this7._element).trigger(Event$5.HIDDEN);
+        $(_this7._element).trigger(Event$5.HIdDEN);
       });
     };
 
@@ -5165,7 +5165,7 @@
         return;
       }
 
-      $target.one(Event$5.HIDDEN, function () {
+      $target.one(Event$5.HIdDEN, function () {
         if ($(_this10).is(':visible')) {
           _this10.focus();
         }
@@ -5369,8 +5369,8 @@
     OUT: 'out'
   };
   var Event$6 = {
-    HIDE: "hide" + EVENT_KEY$6,
-    HIDDEN: "hidden" + EVENT_KEY$6,
+    HIdE: "hide" + EVENT_KEY$6,
+    HIdDEN: "hidden" + EVENT_KEY$6,
     SHOW: "show" + EVENT_KEY$6,
     SHOWN: "shown" + EVENT_KEY$6,
     INSERTED: "inserted" + EVENT_KEY$6,
@@ -5520,7 +5520,7 @@
         }
 
         var tip = this.getTipElement();
-        var tipId = Util.getUID(this.constructor.NAME);
+        var tipId = Util.getUId(this.constructor.NAME);
         tip.setAttribute('id', tipId);
         this.element.setAttribute('aria-describedby', tipId);
         this.setContent();
@@ -5603,7 +5603,7 @@
       var _this2 = this;
 
       var tip = this.getTipElement();
-      var hideEvent = $.Event(this.constructor.Event.HIDE);
+      var hideEvent = $.Event(this.constructor.Event.HIdE);
 
       var complete = function complete() {
         if (_this2._hoverState !== HoverState.SHOW && tip.parentNode) {
@@ -5614,7 +5614,7 @@
 
         _this2.element.removeAttribute('aria-describedby');
 
-        $(_this2.element).trigger(_this2.constructor.Event.HIDDEN);
+        $(_this2.element).trigger(_this2.constructor.Event.HIdDEN);
 
         if (_this2._popper !== null) {
           _this2._popper.destroy();
@@ -6060,8 +6060,8 @@
     CONTENT: '.popover-body'
   };
   var Event$7 = {
-    HIDE: "hide" + EVENT_KEY$7,
-    HIDDEN: "hidden" + EVENT_KEY$7,
+    HIdE: "hide" + EVENT_KEY$7,
+    HIdDEN: "hidden" + EVENT_KEY$7,
     SHOW: "show" + EVENT_KEY$7,
     SHOWN: "shown" + EVENT_KEY$7,
     INSERTED: "inserted" + EVENT_KEY$7,
@@ -6353,7 +6353,7 @@
         var id = $(config.target).attr('id');
 
         if (!id) {
-          id = Util.getUID(NAME$8);
+          id = Util.getUId(NAME$8);
           $(config.target).attr('id', id);
         }
 
@@ -6533,8 +6533,8 @@
   var DATA_API_KEY$7 = '.data-api';
   var JQUERY_NO_CONFLICT$9 = $.fn[NAME$9];
   var Event$9 = {
-    HIDE: "hide" + EVENT_KEY$9,
-    HIDDEN: "hidden" + EVENT_KEY$9,
+    HIdE: "hide" + EVENT_KEY$9,
+    HIdDEN: "hidden" + EVENT_KEY$9,
     SHOW: "show" + EVENT_KEY$9,
     SHOWN: "shown" + EVENT_KEY$9,
     CLICK_DATA_API: "click" + EVENT_KEY$9 + DATA_API_KEY$7
@@ -6591,7 +6591,7 @@
         previous = previous[previous.length - 1];
       }
 
-      var hideEvent = $.Event(Event$9.HIDE, {
+      var hideEvent = $.Event(Event$9.HIdE, {
         relatedTarget: this._element
       });
       var showEvent = $.Event(Event$9.SHOW, {
@@ -6615,7 +6615,7 @@
       this._activate(this._element, listElement);
 
       var complete = function complete() {
-        var hiddenEvent = $.Event(Event$9.HIDDEN, {
+        var hiddenEvent = $.Event(Event$9.HIdDEN, {
           relatedTarget: _this._element
         });
         var shownEvent = $.Event(Event$9.SHOWN, {
@@ -6768,14 +6768,14 @@
   var JQUERY_NO_CONFLICT$a = $.fn[NAME$a];
   var Event$a = {
     CLICK_DISMISS: "click.dismiss" + EVENT_KEY$a,
-    HIDE: "hide" + EVENT_KEY$a,
-    HIDDEN: "hidden" + EVENT_KEY$a,
+    HIdE: "hide" + EVENT_KEY$a,
+    HIdDEN: "hidden" + EVENT_KEY$a,
     SHOW: "show" + EVENT_KEY$a,
     SHOWN: "shown" + EVENT_KEY$a
   };
   var ClassName$a = {
     FADE: 'fade',
-    HIDE: 'hide',
+    HIdE: 'hide',
     SHOW: 'show',
     SHOWING: 'showing'
   };
@@ -6835,7 +6835,7 @@
         }
       };
 
-      this._element.classList.remove(ClassName$a.HIDE);
+      this._element.classList.remove(ClassName$a.HIdE);
 
       this._element.classList.add(ClassName$a.SHOWING);
 
@@ -6854,7 +6854,7 @@
         return;
       }
 
-      $(this._element).trigger(Event$a.HIDE);
+      $(this._element).trigger(Event$a.HIdE);
 
       if (withoutTimeout) {
         this._close();
@@ -6898,9 +6898,9 @@
       var _this4 = this;
 
       var complete = function complete() {
-        _this4._element.classList.add(ClassName$a.HIDE);
+        _this4._element.classList.add(ClassName$a.HIdE);
 
-        $(_this4._element).trigger(Event$a.HIDDEN);
+        $(_this4._element).trigger(Event$a.HIdDEN);
       };
 
       this._element.classList.remove(ClassName$a.SHOW);

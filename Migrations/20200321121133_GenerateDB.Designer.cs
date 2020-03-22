@@ -23,7 +23,7 @@ namespace BookShopTmp.Migrations
 
             modelBuilder.Entity("BookShopTmp.Models.Author", b =>
                 {
-                    b.Property<int>("AuthorID")
+                    b.Property<int>("AuthorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -34,34 +34,34 @@ namespace BookShopTmp.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AuthorID");
+                    b.HasKey("AuthorId");
 
                     b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Author_Book", b =>
                 {
-                    b.Property<int>("BookID")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("AuthorID")
+                    b.Property<int>("AuthorId")
                         .HasColumnType("int");
 
-                    b.HasKey("BookID", "AuthorID");
+                    b.HasKey("BookId", "AuthorId");
 
-                    b.HasIndex("AuthorID");
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("Author_Books");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Book", b =>
                 {
-                    b.Property<int>("BookID")
+                    b.Property<int>("BookId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CategoryID")
+                    b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
                     b.Property<string>("File")
@@ -73,7 +73,7 @@ namespace BookShopTmp.Migrations
                     b.Property<byte[]>("Image")
                         .HasColumnType("image");
 
-                    b.Property<int>("LanguageID")
+                    b.Property<int>("LanguageId")
                         .HasColumnType("int");
 
                     b.Property<int>("NumOfPages")
@@ -82,7 +82,7 @@ namespace BookShopTmp.Migrations
                     b.Property<int>("Price")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PublisherID")
+                    b.Property<int?>("PublisherId")
                         .HasColumnType("int");
 
                     b.Property<int>("Stock")
@@ -98,35 +98,35 @@ namespace BookShopTmp.Migrations
                     b.Property<short>("Weight")
                         .HasColumnType("smallint");
 
-                    b.HasKey("BookID");
+                    b.HasKey("BookId");
 
-                    b.HasIndex("CategoryID");
+                    b.HasIndex("CategoryId");
 
-                    b.HasIndex("LanguageID");
+                    b.HasIndex("LanguageId");
 
-                    b.HasIndex("PublisherID");
+                    b.HasIndex("PublisherId");
 
                     b.ToTable("BookInfo");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Book_Translator", b =>
                 {
-                    b.Property<int>("BookID")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("TranslatorID")
+                    b.Property<int>("TranslatorId")
                         .HasColumnType("int");
 
-                    b.HasKey("BookID", "TranslatorID");
+                    b.HasKey("BookId", "TranslatorId");
 
-                    b.HasIndex("TranslatorID");
+                    b.HasIndex("TranslatorId");
 
                     b.ToTable("Book_Translator");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Category", b =>
                 {
-                    b.Property<int>("CategoryID")
+                    b.Property<int>("CategoryId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -134,37 +134,37 @@ namespace BookShopTmp.Migrations
                     b.Property<string>("CategoryName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ParentCategoryID")
+                    b.Property<int?>("ParentCategoryId")
                         .HasColumnType("int");
 
-                    b.HasKey("CategoryID");
+                    b.HasKey("CategoryId");
 
-                    b.HasIndex("ParentCategoryID");
+                    b.HasIndex("ParentCategoryId");
 
                     b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.City", b =>
                 {
-                    b.Property<int>("CityID")
+                    b.Property<int>("CityId")
                         .HasColumnType("int");
 
                     b.Property<string>("CityName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ProviceProvinceID")
+                    b.Property<int?>("ProviceProvinceId")
                         .HasColumnType("int");
 
-                    b.HasKey("CityID");
+                    b.HasKey("CityId");
 
-                    b.HasIndex("ProviceProvinceID");
+                    b.HasIndex("ProviceProvinceId");
 
                     b.ToTable("Cities");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Customer", b =>
                 {
-                    b.Property<string>("CustomerID")
+                    b.Property<string>("CustomerId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Address1")
@@ -179,10 +179,10 @@ namespace BookShopTmp.Migrations
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CityID1")
+                    b.Property<int>("CityId1")
                         .HasColumnType("int");
 
-                    b.Property<int>("CityID2")
+                    b.Property<int>("CityId2")
                         .HasColumnType("int");
 
                     b.Property<string>("FirstName")
@@ -200,18 +200,18 @@ namespace BookShopTmp.Migrations
                     b.Property<string>("Tell")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("CustomerID");
+                    b.HasKey("CustomerId");
 
-                    b.HasIndex("CityID1");
+                    b.HasIndex("CityId1");
 
-                    b.HasIndex("CityID2");
+                    b.HasIndex("CityId2");
 
                     b.ToTable("Customers");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Discount", b =>
                 {
-                    b.Property<int>("BookID")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("EndDate")
@@ -223,14 +223,14 @@ namespace BookShopTmp.Migrations
                     b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.HasKey("BookID");
+                    b.HasKey("BookId");
 
                     b.ToTable("Discounts");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Language", b =>
                 {
-                    b.Property<int>("LanguageID")
+                    b.Property<int>("LanguageId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -238,14 +238,14 @@ namespace BookShopTmp.Migrations
                     b.Property<string>("LanguageName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("LanguageID");
+                    b.HasKey("LanguageId");
 
                     b.ToTable("Languages");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Order", b =>
                 {
-                    b.Property<string>("OrderID")
+                    b.Property<string>("OrderId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<long>("AmountPaid")
@@ -254,27 +254,27 @@ namespace BookShopTmp.Migrations
                     b.Property<DateTime>("BuyDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("CustomerID")
+                    b.Property<string>("CustomerId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("DispatchNumber")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OrderStatusID")
+                    b.Property<int?>("OrderStatusId")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderID");
+                    b.HasKey("OrderId");
 
-                    b.HasIndex("CustomerID");
+                    b.HasIndex("CustomerId");
 
-                    b.HasIndex("OrderStatusID");
+                    b.HasIndex("OrderStatusId");
 
                     b.ToTable("Orders");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.OrderStatus", b =>
                 {
-                    b.Property<int>("OrderStatusID")
+                    b.Property<int>("OrderStatusId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -282,42 +282,42 @@ namespace BookShopTmp.Migrations
                     b.Property<string>("OrderStatusName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("OrderStatusID");
+                    b.HasKey("OrderStatusId");
 
                     b.ToTable("OrderStatuses");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Order_Book", b =>
                 {
-                    b.Property<string>("OrderID")
+                    b.Property<string>("OrderId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<int>("BookID")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.HasKey("OrderID", "BookID");
+                    b.HasKey("OrderId", "BookId");
 
-                    b.HasIndex("BookID");
+                    b.HasIndex("BookId");
 
                     b.ToTable("Order_Books");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Provice", b =>
                 {
-                    b.Property<int>("ProvinceID")
+                    b.Property<int>("ProvinceId")
                         .HasColumnType("int");
 
                     b.Property<string>("ProvinceName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ProvinceID");
+                    b.HasKey("ProvinceId");
 
                     b.ToTable("Provices");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Publisher", b =>
                 {
-                    b.Property<int>("PublisherID")
+                    b.Property<int>("PublisherId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -325,14 +325,14 @@ namespace BookShopTmp.Migrations
                     b.Property<string>("PublisherName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("PublisherID");
+                    b.HasKey("PublisherId");
 
                     b.ToTable("Publisher");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Translator", b =>
                 {
-                    b.Property<int>("TranslatorID")
+                    b.Property<int>("TranslatorId")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
@@ -343,7 +343,7 @@ namespace BookShopTmp.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("TranslatorID");
+                    b.HasKey("TranslatorId");
 
                     b.ToTable("Translator");
                 });
@@ -352,13 +352,13 @@ namespace BookShopTmp.Migrations
                 {
                     b.HasOne("BookShopTmp.Models.Author", "Author")
                         .WithMany("Author_Books")
-                        .HasForeignKey("AuthorID")
+                        .HasForeignKey("AuthorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookShopTmp.Models.Book", "Book")
                         .WithMany("Author_Books")
-                        .HasForeignKey("BookID")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -367,32 +367,32 @@ namespace BookShopTmp.Migrations
                 {
                     b.HasOne("BookShopTmp.Models.Category", "Category")
                         .WithMany()
-                        .HasForeignKey("CategoryID")
+                        .HasForeignKey("CategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookShopTmp.Models.Language", "Language")
                         .WithMany("Books")
-                        .HasForeignKey("LanguageID")
+                        .HasForeignKey("LanguageId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookShopTmp.Models.Publisher", "Publisher")
                         .WithMany("Books")
-                        .HasForeignKey("PublisherID");
+                        .HasForeignKey("PublisherId");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Book_Translator", b =>
                 {
                     b.HasOne("BookShopTmp.Models.Book", "Book")
                         .WithMany("book_Tranlators")
-                        .HasForeignKey("BookID")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookShopTmp.Models.Translator", "Translator")
                         .WithMany("book_Tranlators")
-                        .HasForeignKey("TranslatorID")
+                        .HasForeignKey("TranslatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -401,27 +401,27 @@ namespace BookShopTmp.Migrations
                 {
                     b.HasOne("BookShopTmp.Models.Category", "category")
                         .WithMany("categories")
-                        .HasForeignKey("ParentCategoryID");
+                        .HasForeignKey("ParentCategoryId");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.City", b =>
                 {
                     b.HasOne("BookShopTmp.Models.Provice", "Provice")
                         .WithMany("City")
-                        .HasForeignKey("ProviceProvinceID");
+                        .HasForeignKey("ProviceProvinceId");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Customer", b =>
                 {
                     b.HasOne("BookShopTmp.Models.City", "city1")
                         .WithMany("Customers1")
-                        .HasForeignKey("CityID1")
+                        .HasForeignKey("CityId1")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookShopTmp.Models.City", "city2")
                         .WithMany("Customers2")
-                        .HasForeignKey("CityID2")
+                        .HasForeignKey("CityId2")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
                 });
@@ -430,7 +430,7 @@ namespace BookShopTmp.Migrations
                 {
                     b.HasOne("BookShopTmp.Models.Book", "Book")
                         .WithOne("Discount")
-                        .HasForeignKey("BookShopTmp.Models.Discount", "BookID")
+                        .HasForeignKey("BookShopTmp.Models.Discount", "BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
@@ -439,24 +439,24 @@ namespace BookShopTmp.Migrations
                 {
                     b.HasOne("BookShopTmp.Models.Customer", "Customer")
                         .WithMany("Orders")
-                        .HasForeignKey("CustomerID");
+                        .HasForeignKey("CustomerId");
 
                     b.HasOne("BookShopTmp.Models.OrderStatus", "OrderStatus")
                         .WithMany("Orders")
-                        .HasForeignKey("OrderStatusID");
+                        .HasForeignKey("OrderStatusId");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Order_Book", b =>
                 {
                     b.HasOne("BookShopTmp.Models.Book", "Book")
                         .WithMany("Order_Books")
-                        .HasForeignKey("BookID")
+                        .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookShopTmp.Models.Order", "Order")
                         .WithMany("Order_Books")
-                        .HasForeignKey("OrderID")
+                        .HasForeignKey("OrderId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

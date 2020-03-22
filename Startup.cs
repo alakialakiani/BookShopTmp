@@ -1,14 +1,17 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using BookShopTmp.Models;
+using BookShopTmp.Models.Repository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
 namespace BookShopTmp
@@ -29,6 +32,7 @@ namespace BookShopTmp
 			services.AddDbContext<BookShopContext>(
 				options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddTransient<BookShopContext>();
+            services.AddTransient<BooksRepository>();
 			services.AddRazorPages();
 		}
 
@@ -38,7 +42,12 @@ namespace BookShopTmp
 			if (env.IsDevelopment())
 			{
 				app.UseDeveloperExceptionPage();
-			}
+                app.UseStaticFiles(new StaticFileOptions
+                {
+                    FileProvider = new PhysicalFileProvider(Path.Combine(env.ContentRootPath, "node_modules")),
+                    RequestPath = "/" + "node_modules",
+                });
+            }
 			else
 			{
 				app.UseExceptionHandler("/Home/Error");
