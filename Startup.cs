@@ -29,8 +29,6 @@ namespace BookShopTmp
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllersWithViews();
-			services.AddDbContext<BookShopContext>(
-				options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 			services.AddTransient<BookShopContext>();
             services.AddTransient<BooksRepository>();
 			services.AddRazorPages();

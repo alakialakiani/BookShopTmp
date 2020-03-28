@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookShopTmp.Migrations
 {
     [DbContext(typeof(BookShopContext))]
-    [Migration("20200322182057_AddProperties")]
-    partial class AddProperties
+    [Migration("20200323200448_AddBook_Translators_Properties")]
+    partial class AddBook_Translators_Properties
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -91,7 +91,7 @@ namespace BookShopTmp.Migrations
                     b.Property<int>("PublishYear")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PublisherId")
+                    b.Property<int>("PublisherId")
                         .HasColumnType("int");
 
                     b.Property<int>("Stock")
@@ -143,7 +143,7 @@ namespace BookShopTmp.Migrations
 
                     b.HasIndex("TranslatorId");
 
-                    b.ToTable("Book_Translator");
+                    b.ToTable("Book_Translators");
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Category", b =>
@@ -270,7 +270,7 @@ namespace BookShopTmp.Migrations
                     b.Property<string>("OrderId")
                         .HasColumnType("nvarchar(450)");
 
-                    b.Property<long>("AmountPaid")
+                    b.Property<long>("AmountPaId")
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("BuyDate")
@@ -395,7 +395,9 @@ namespace BookShopTmp.Migrations
 
                     b.HasOne("BookShopTmp.Models.Publisher", "Publisher")
                         .WithMany("Books")
-                        .HasForeignKey("PublisherId");
+                        .HasForeignKey("PublisherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("BookShopTmp.Models.Book_Category", b =>
@@ -416,13 +418,13 @@ namespace BookShopTmp.Migrations
             modelBuilder.Entity("BookShopTmp.Models.Book_Translator", b =>
                 {
                     b.HasOne("BookShopTmp.Models.Book", "Book")
-                        .WithMany("Book_Tranlators")
+                        .WithMany("Book_Translators")
                         .HasForeignKey("BookId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("BookShopTmp.Models.Translator", "Translator")
-                        .WithMany("book_Tranlators")
+                        .WithMany("Book_Translators")
                         .HasForeignKey("TranslatorId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

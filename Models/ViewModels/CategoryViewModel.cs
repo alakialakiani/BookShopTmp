@@ -1,18 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace BookShopTmp.Models.ViewModels
 {
-    public class TreeViewCategory
-    {
-        public TreeViewCategory()
-        {
-            SubCategories = new List<TreeViewCategory>();
-        }
-        public int CategoryId { get; set; }
-        public string CategoryName { get; set; }
-        public List<TreeViewCategory> SubCategories { get; set; }
-    }
+	public class TreeViewCategory
+	{
+		public TreeViewCategory()
+		{
+			SubCategories = new List<TreeViewCategory>();
+		}
+		public int CategoryId { get; set; }
+		public string CategoryName { get; set; }
+		public List<TreeViewCategory> SubCategories { get; set; }
+	}
 }

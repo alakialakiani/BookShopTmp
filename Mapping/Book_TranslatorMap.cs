@@ -15,13 +15,12 @@ namespace BookShopTmp.Mapping
             builder.HasKey(p => new { p.BookId, p.TranslatorId });
             builder
                 .HasOne(b => b.Book)
-                .WithMany(p => p.Book_Tranlators)
+                .WithMany(p => p.Book_Translators)
                 .HasForeignKey(f => f.BookId);
-
 
             builder
               .HasOne(b => b.Translator)
-              .WithMany(p => p.book_Tranlators)
+              .WithMany(p => p.Book_Translators)
               .HasForeignKey(f => f.TranslatorId);
 
         }

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BookShopTmp.Migrations
 {
-    public partial class GenerateDB : Migration
+    public partial class AddBook_Translators_Properties : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -80,7 +80,7 @@ namespace BookShopTmp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Publisher",
+                name: "Publishers",
                 columns: table => new
                 {
                     PublisherId = table.Column<int>(nullable: false)
@@ -89,7 +89,7 @@ namespace BookShopTmp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Publisher", x => x.PublisherId);
+                    table.PrimaryKey("PK_Publishers", x => x.PublisherId);
                 });
 
             migrationBuilder.CreateTable(
@@ -139,20 +139,17 @@ namespace BookShopTmp.Migrations
                     NumOfPages = table.Column<int>(nullable: false),
                     Weight = table.Column<short>(nullable: false),
                     ISBN = table.Column<string>(nullable: true),
+                    IsPublish = table.Column<bool>(nullable: true),
+                    PublishDate = table.Column<DateTime>(nullable: true),
+                    PublishYear = table.Column<int>(nullable: false),
+                    Delete = table.Column<bool>(nullable: true),
+                    PublisherId = table.Column<int>(nullable: false),
                     Image = table.Column<byte[]>(type: "image", nullable: true),
-                    LanguageId = table.Column<int>(nullable: false),
-                    CategoryId = table.Column<int>(nullable: false),
-                    PublisherId = table.Column<int>(nullable: true)
+                    LanguageId = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_BookInfo", x => x.BookId);
-                    table.ForeignKey(
-                        name: "FK_BookInfo_Categories_CategoryId",
-                        column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "CategoryId",
-                        onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_BookInfo_Languages_LanguageId",
                         column: x => x.LanguageId,
@@ -160,11 +157,11 @@ namespace BookShopTmp.Migrations
                         principalColumn: "LanguageId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookInfo_Publisher_PublisherId",
+                        name: "FK_BookInfo_Publishers_PublisherId",
                         column: x => x.PublisherId,
-                        principalTable: "Publisher",
+                        principalTable: "Publishers",
                         principalColumn: "PublisherId",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -226,7 +223,31 @@ namespace BookShopTmp.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Book_Translator",
+                name: "Book_Categories",
+                columns: table => new
+                {
+                    BookId = table.Column<int>(nullable: false),
+                    CategoryId = table.Column<int>(nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Book_Categories", x => new { x.BookId, x.CategoryId });
+                    table.ForeignKey(
+                        name: "FK_Book_Categories_BookInfo_BookId",
+                        column: x => x.BookId,
+                        principalTable: "BookInfo",
+                        principalColumn: "BookId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Book_Categories_Categories_CategoryId",
+                        column: x => x.CategoryId,
+                        principalTable: "Categories",
+                        principalColumn: "CategoryId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Book_Translators",
                 columns: table => new
                 {
                     TranslatorId = table.Column<int>(nullable: false),
@@ -234,15 +255,15 @@ namespace BookShopTmp.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Book_Translator", x => new { x.BookId, x.TranslatorId });
+                    table.PrimaryKey("PK_Book_Translators", x => new { x.BookId, x.TranslatorId });
                     table.ForeignKey(
-                        name: "FK_Book_Translator_BookInfo_BookId",
+                        name: "FK_Book_Translators_BookInfo_BookId",
                         column: x => x.BookId,
                         principalTable: "BookInfo",
                         principalColumn: "BookId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Book_Translator_Translator_TranslatorId",
+                        name: "FK_Book_Translators_Translator_TranslatorId",
                         column: x => x.TranslatorId,
                         principalTable: "Translator",
                         principalColumn: "TranslatorId",
@@ -274,7 +295,7 @@ namespace BookShopTmp.Migrations
                 columns: table => new
                 {
                     OrderId = table.Column<string>(nullable: false),
-                    AmountPaid = table.Column<long>(nullable: false),
+                    AmountPaId = table.Column<long>(nullable: false),
                     DispatchNumber = table.Column<string>(nullable: true),
                     BuyDate = table.Column<DateTime>(nullable: false),
                     OrderStatusId = table.Column<int>(nullable: true),
@@ -327,14 +348,14 @@ namespace BookShopTmp.Migrations
                 column: "AuthorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Book_Translator_TranslatorId",
-                table: "Book_Translator",
-                column: "TranslatorId");
+                name: "IX_Book_Categories_CategoryId",
+                table: "Book_Categories",
+                column: "CategoryId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookInfo_CategoryId",
-                table: "BookInfo",
-                column: "CategoryId");
+                name: "IX_Book_Translators_TranslatorId",
+                table: "Book_Translators",
+                column: "TranslatorId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookInfo_LanguageId",
@@ -388,7 +409,10 @@ namespace BookShopTmp.Migrations
                 name: "Author_Books");
 
             migrationBuilder.DropTable(
-                name: "Book_Translator");
+                name: "Book_Categories");
+
+            migrationBuilder.DropTable(
+                name: "Book_Translators");
 
             migrationBuilder.DropTable(
                 name: "Discounts");
@@ -400,6 +424,9 @@ namespace BookShopTmp.Migrations
                 name: "Authors");
 
             migrationBuilder.DropTable(
+                name: "Categories");
+
+            migrationBuilder.DropTable(
                 name: "Translator");
 
             migrationBuilder.DropTable(
@@ -409,13 +436,10 @@ namespace BookShopTmp.Migrations
                 name: "Orders");
 
             migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
                 name: "Languages");
 
             migrationBuilder.DropTable(
-                name: "Publisher");
+                name: "Publishers");
 
             migrationBuilder.DropTable(
                 name: "Customers");

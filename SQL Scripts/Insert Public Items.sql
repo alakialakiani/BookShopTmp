@@ -1,0 +1,56 @@
+INSERT INTO Authors(FirstName, LastName) VALUES(N'صادق', N'هددایت');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'سیمین', N'دانشور');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'عباس', N'معروفی');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'محمود', N'دولت آبادی');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'مهشید', N'امیرشاهی');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'محمدعلی', N'جمالزاده');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'هوشنگ', N'گلشیری');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'پرویز', N'ناتل خانلری');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'فروغ', N'فرخزاد');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'عبدالحسین', N'زرین کوب');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'هوشنگ', N'ابتهاج');
+INSERT INTO Authors(FirstName, LastName) VALUES(N'مهدی', N'اخوان ثالث');
+
+INSERT INTO [Languages] VALUES (N'فارسی');
+INSERT INTO [Languages] VALUES (N'انگلیسی');
+INSERT INTO [Languages] VALUES (N'اسپانیولی');
+INSERT INTO [Languages] VALUES (N'فرانسوی');
+INSERT INTO [Languages] VALUES (N'عربی');
+INSERT INTO [Languages] VALUES (N'ترکی');
+INSERT INTO [Languages] VALUES (N'لاتین');
+
+INSERT INTO [Categories] VALUES (N'ادبیات', NULL);
+INSERT INTO [Categories] VALUES (N'تاریخی', NULL);
+INSERT INTO [Categories] VALUES (N'جغرافیا', NULL);
+INSERT INTO [Categories] VALUES (N'شعر', 1);
+INSERT INTO [Categories] VALUES (N'داستان', 1);
+INSERT INTO [Categories] VALUES (N'رمان', 1);
+INSERT INTO [Categories] VALUES (N'جنگ', 2);
+INSERT INTO [Categories] VALUES (N'هنر', NULL);
+INSERT INTO [Categories] VALUES (N'موسیقی', 8);
+INSERT INTO [Categories] VALUES (N'سفالگری', 8);
+INSERT INTO [Categories] VALUES (N'صنایع دستی', 8);
+INSERT INTO [Categories] VALUES (N'گردشگری', 3);
+INSERT INTO [Categories] VALUES (N'دانشگاهی', NULL);
+INSERT INTO [Categories] VALUES (N'هوش مصنوعی', 13);
+INSERT INTO [Categories] VALUES (N'علمی', NULL);
+INSERT INTO [Categories] VALUES (N'علوم پایه', NULL);
+INSERT INTO [Categories] VALUES (N'ریاضیات', 16);
+INSERT INTO [Categories] VALUES (N'فیزیک', 16);
+INSERT INTO [Categories] VALUES (N'اقتصادی', 13);
+
+INSERT INTO [Translator] VALUES (N'سیمین', N'دانشور');
+INSERT INTO [Translator] VALUES (N'مهدی', N'سحابی');
+INSERT INTO [Translator] VALUES (N'نجف', N'دریابندری');
+INSERT INTO [Translator] VALUES (N'مهدی', N'غبرایی');
+INSERT INTO [Translator] VALUES (N'علیرضا', N'مرادی');
+INSERT INTO [Translator] VALUES (N'ثمین', N'باغچه بان');
+
+INSERT INTO [Publishers] VALUES (N'نشر چشمه');
+INSERT INTO [Publishers] VALUES (N'انتشارات امیرکبیر');
+INSERT INTO [Publishers] VALUES (N'نشر روزنه');
+INSERT INTO [Publishers] VALUES (N'ققنوس');
+INSERT INTO [Publishers] VALUES (N'نشر روز');
+INSERT INTO [Publishers] VALUES (N'انتشارات سمت');
+INSERT INTO [Publishers] VALUES (N'نشر نی');
+INSERT INTO [Publishers] VALUES (N'انتشارات جنگل');
